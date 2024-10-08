@@ -1,0 +1,67 @@
+.app-layout {
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.app-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.main-card {
+  padding: 20px;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reupload-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-layout {
+    padding: 10px 0;
+  }
+
+  .main-card {
+    padding: 15px;
+  }
+
+  .app-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-layout {
+    padding: 5px 0;
+  }
+
+  .main-card {
+    padding: 10px;
+  }
+
+  .app-title {
+    font-size: 20px;
+  }
+
+  .ant-upload-drag-icon {
+    font-size: 48px;
+  }
+
+  .ant-upload-text {
+    font-size: 16px;
+  }
+
+  .ant-upload-hint {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,86 @@
+.webvtt-player .match {
+  background-color: lightyellow;
+}
+
+.webvtt-player .line {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.webvtt-player .time {
+  width: 110px;
+  float: left;
+  color: #999;
+  font-size: 10pt;
+  line-height: 14pt;
+}
+
+.webvtt-player .text {
+  margin-left: 110px;
+}
+
+.webvtt-player .track {
+  flex: 6;
+  height: 40vh;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.webvtt-player .active.line {
+  /* border: 1px solid #ccc; */
+  border-left: 4px solid #007bff67; 
+}
+
+.webvtt-player .match {
+  background-color: lightyellow;
+}
+
+.webvtt-player .line {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.webvtt-player .time {
+  width: 110px;
+  float: left;
+  font-size: 10pt;
+  line-height: 14pt;
+}
+
+.webvtt-player .text {
+  margin-left: 110px;
+  color: #0000005a;
+}
+.webvtt-player .transcript {
+  height: 45vh;
+  padding: 10px;
+  overflow-y: scroll;
+}
+.webvtt-player .media {
+  width: 100%;
+  border: thin solid #ccc;
+  margin-right: auto;
+}
+
+.webvtt-player audio {
+  width: 100%;
+  background-color: #ccc;
+}
+
+.webvtt-player audio::-webkit-media-controls-panel {
+  background-color: #ccc;
+}
+
+
+.webvtt-player .controls {
+  padding: 5px;
+  text-align: center;
+  vertical-align: text-top;
+  background-color: #ccc;
+}
+
+.webvtt-player .seekBar {
+  vertical-align: middle;
+  width: 70%;
+}
+
