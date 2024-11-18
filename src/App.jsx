@@ -62,7 +62,7 @@ function App() {
                         <Dragger
                             beforeUpload={onFileUpload}
                             showUploadList={false}
-                            accept="audio/*,.vtt,.srt"
+                            accept="audio/mp3,audio/mp4,audio/mpeg,audio/wav,audio/x-m4a,.mp3,.m4a,.wav,.vtt,.srt"
                             multiple={true}
                         >
                             <p className="ant-upload-drag-icon">
