@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Player from './VTT/Player.jsx';
 import { Layout, Typography, Upload, message, Card, Button } from 'antd';
-import { InboxOutlined, DeleteOutlined } from '@ant-design/icons';
+import { InboxOutlined, DeleteOutlined, GithubOutlined } from '@ant-design/icons';
 import './App.css';
 import { handleAudioUpload, handleTranscriptUpload, convertSRTtoVTT } from './uploadHandler';
 
@@ -78,6 +78,15 @@ function App() {
                     )}
                 </Card>
             </Content>
+            <footer className="app-footer">
+                <a
+                    href="https://github.com/eMUQI/Audio-Transcript-Player"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <GithubOutlined /> GitHub
+                </a>
+            </footer>
         </Layout>
     );
 }
