@@ -11,6 +11,7 @@ class Player extends React.Component {
     super()
     this.state = {
       loaded: false,
+      error: '',
       currentTime: 0,
       query: ''
     }
@@ -20,12 +21,25 @@ class Player extends React.Component {
 
     this.onLoaded = this.onLoaded.bind(this)
     this.seek = this.seek.bind(this)
-    this.checkIfLoaded = this.checkIfLoaded.bind(this)
+    this.onTrackError = this.onTrackError.bind(this)
     this.updateQuery = this.updateQuery.bind(this)
   }
 
   componentDidMount() {
-    this.checkIfLoaded()
+    this.track.current.addEventListener('load', this.onLoaded)
+    this.track.current.addEventListener('error', this.onTrackError)
+    // 自定义字幕区域需要启用轨道，以加载字幕并接收时间同步事件。
+    this.track.current.track.mode = 'hidden'
+    if (this.track.current.readyState === 2) {
+      this.onLoaded()
+    } else if (this.track.current.readyState === 3) {
+      this.onTrackError()
+    }
+  }
+
+  componentWillUnmount() {
+    this.track.current.removeEventListener('load', this.onLoaded)
+    this.track.current.removeEventListener('error', this.onTrackError)
   }
 
   render () {
@@ -35,7 +49,7 @@ class Player extends React.Component {
       track = this.track.current.track
       metatrack = this.metatrack.current.track
     }
-    const preload = this.props.preload ? "true" : "false"
+    const preload = this.props.preload ? 'auto' : 'metadata'
     const metadata = this.props.metadata
       ? <Metadata
         url={this.props.metadata}
@@ -49,7 +63,6 @@ class Player extends React.Component {
             <audio
               controls
               crossOrigin="anonymous"
-              onLoad={this.onLoaded}
               preload={preload}
               ref={this.audio}>
               <source src={this.props.audio} />
@@ -64,6 +77,11 @@ class Player extends React.Component {
             </audio>
           </div>
           <div className="tracks">
+            {this.state.error ? (
+              <p role="alert">{this.state.error}</p>
+            ) : !this.state.loaded ? (
+              <p role="status">Loading subtitles…</p>
+            ) : null}
             <Transcript 
               url={this.props.transcript} 
               seek={this.seek} 
@@ -78,18 +96,20 @@ class Player extends React.Component {
   }
 
   onLoaded() {
-    this.setState({loaded: true})
+    const cues = this.track.current.track.cues
+    this.setState({
+      loaded: true,
+      error: cues && cues.length > 0
+        ? ''
+        : 'No subtitles found. Please check the subtitle file and re-upload.'
+    })
   }
 
-  checkIfLoaded(tries=0) {
-    tries += 1
-    const e = this.track.current
-    if (e && e.track && e.track.cues && e.track.cues.length > 0) {
-      this.onLoaded()
-    } else if (! this.state.loaded) {
-      const wait = 25 * Math.pow(tries, 2)
-      setTimeout(this.checkIfLoaded, wait, tries)
-    }
+  onTrackError() {
+    this.setState({
+      loaded: false,
+      error: 'Unable to load subtitles. Please check the SRT or VTT file and re-upload.'
+    })
   }
 
   seek(secs) {
