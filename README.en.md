@@ -4,9 +4,19 @@
 
 Demo: https://emuqi.github.io/Audio-Transcript-Player/
 
-Audio Transcript Player is a web-based audio playback tool built on [webvtt-player](https://github.com/umd-mith/webvtt-player). It allows you to upload audio and subtitle files (SRT, VTT) locally, enabling synchronized audio playback with subtitles. You can click on the subtitles to jump to the corresponding audio position. Ideal for listening to and learning from English podcasts.
+Audio Transcript Player is a web-based audio playback tool built on [webvtt-player](https://github.com/umd-mith/webvtt-player). It lets you open local audio and subtitle files (SRT, VTT), enabling synchronized audio playback with subtitles. You can click on the subtitles to jump to the corresponding audio position. Ideal for listening to and learning from English podcasts.
 
-![example](example/example.png)
+![example](example/example-en.png)
+
+## Features
+
+- Import a local audio file and SRT / VTT subtitles, together or one at a time
+- The current line is highlighted and scrolled into view; select any line to replay it
+- Search the transcript for a word or phrase, with a matching-line count
+- Playback speed from 0.25× to 2×
+- ← / → keys to skip back / forward 5 seconds
+- English / 中文 interface, following the browser language by default
+- Files are processed locally in your browser and never uploaded
 
 ## Local Development
 

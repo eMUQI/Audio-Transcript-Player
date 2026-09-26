@@ -4,9 +4,19 @@
 
 Demo：https://emuqi.github.io/Audio-Transcript-Player/
 
-Audio Transcript Player 是一个基于 [webvtt-player](https://github.com/umd-mith/webvtt-player) 的网页音频播放工具。支持本地上传音频和字幕文件（SRT、VTT），实现音频播放与字幕同步，并可通过点击字幕跳转到对应位置。适用于英语播客听力和学习。
+Audio Transcript Player 是一个基于 [webvtt-player](https://github.com/umd-mith/webvtt-player) 的网页音频播放工具。支持导入本地音频和字幕文件（SRT、VTT），实现音频播放与字幕同步，并可通过点击字幕跳转到对应位置。适用于英语播客听力和学习。
 
 ![example](example/example.png)
+
+## 功能
+
+- 导入本地音频和 SRT / VTT 字幕，可一起选择，也可分别导入
+- 字幕随播放高亮并自动滚动，点击任意一句即可跳转重听
+- 搜索字幕中的单词或短语，并显示匹配句数
+- 倍速播放（0.25× – 2×）
+- 键盘 ← / → 快退 / 快进 5 秒
+- 中文 / English 界面切换，默认跟随浏览器语言
+- 文件仅在浏览器本地处理，不会上传
 
 ## 本地开发
 
