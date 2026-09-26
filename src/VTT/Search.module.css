@@ -1,54 +1,86 @@
 .search {
-  border-top: thin solid #ccc;
-  padding: 5px;
-  font-size: 14pt;
-  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--line);
 }
 
 .container {
   display: flex;
+  flex: 1;
   align-items: center;
-  border: thin solid #ccc;
-  border-radius: 20px;
-  overflow: hidden;
+  gap: 10px;
+  min-width: 0;
+  border-radius: 6px;
+}
+
+.container:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+.icon {
+  color: var(--muted);
+  font-size: 17px;
 }
 
 .input {
-  flex-grow: 1;
-  font-size: 12pt;
-  border: none;
-  padding: 8px;
+  width: 100%;
   min-width: 0;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #283a30;
+  font-size: 14px;
+}
+
+.input::placeholder {
+  color: var(--muted);
 }
 
 .input:focus {
   outline: none;
 }
 
-.icon {
-  padding: 0 10px;
-  font-size: 14pt;
-  display: flex;
-  align-items: center;
+.clear {
+  min-width: 36px;
+  min-height: 36px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
+.clear:hover {
+  background: #edf0e8;
+}
+
+.results {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  /* 结果文字另起一行，避免挤压输入框 */
   .search {
-    padding: 5px 0;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 10px 16px;
   }
 
   .container {
-    border-radius: 10px;
+    flex-basis: 100%;
   }
 
+  .results:empty {
+    display: none;
+  }
+
+  /* 16px 避免 iOS 聚焦时自动缩放 */
   .input {
-    font-size: 14px;
-    padding: 6px;
-  }
-
-  .icon {
-    padding: 0 8px;
-    font-size: 12pt;
+    font-size: 16px;
   }
 }

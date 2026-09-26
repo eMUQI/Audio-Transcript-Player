@@ -1,86 +1,387 @@
+:root {
+  --accent: #32634b;
+  --muted: #647065;
+  --line: #dedfd4;
+  color: #283a30;
+  background: #f6f5ef;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: -70px;
+  left: 16px;
+  z-index: 2;
+  padding: 12px;
+  background: #fffefa;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* 页面框架 */
 .app-layout {
-  min-height: 100vh;
-  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: 0 48px;
+}
+
+.app-header,
+.app-content,
+.app-footer {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.3px;
+  text-decoration: none;
+}
+
+.language-switch {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.language-switch button {
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.language-switch button[aria-pressed='true'] {
+  background: #e9ece4;
+  color: #283a30;
+  font-weight: 600;
 }
 
 .app-content {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.main-card {
-  padding: 20px;
-}
-
-.app-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.reupload-button-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+  flex: 1;
+  max-width: 860px;
+  padding-block: 32px 40px;
 }
 
 .app-footer {
-  text-align: center;
-  margin-top: 16px;
-  color: rgba(0, 0, 0, 0.45);
-  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .app-footer a {
-  color: inherit;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 7px;
+  text-decoration: none;
 }
 
 .app-footer a:hover {
-  color: rgba(0, 0, 0, 0.75);
+  color: var(--accent);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* 导入页 */
+.import-panel {
+  max-width: 560px;
+  margin-inline: auto;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fffefa;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.import-panel h1 {
+  margin: 0 0 9px;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -.7px;
+}
+
+.step-count {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.import-copy {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.import-panel .ant-upload-wrapper .ant-upload-drag {
+  border-color: #b4c2b4;
+  border-radius: 9px;
+  background: #f2f4ec;
+}
+
+.import-panel .ant-upload-wrapper .ant-upload-drag:hover {
+  background: #eaf0e5;
+}
+
+.import-panel .ant-upload-wrapper .ant-upload-btn {
+  padding: 28px 16px;
+}
+
+.upload-symbol {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 25px;
+}
+
+.upload-title,
+.upload-description {
+  display: block;
+}
+
+.upload-title {
+  color: #284c39;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.upload-description {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.file-checklist {
+  margin-top: 18px;
+}
+
+.file-checklist > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  color: var(--muted);
+}
+
+.file-checklist > div + div {
+  border-top: 1px solid #e9e9e0;
+}
+
+.file-checklist > div > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.file-checklist strong,
+.file-checklist span span {
+  display: block;
+}
+
+.file-checklist strong {
+  margin-bottom: 3px;
+  color: #36473b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.file-checklist span span {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-ready > .anticon {
+  color: var(--accent);
+}
+
+.local-note {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* 播放页 */
+.usage-title {
+  margin: 0 0 10px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.5px;
+}
+
+.usage-description {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.listening-panel {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffefa;
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 24px 18px;
+}
+
+.session-header .ant-btn {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+
+.session-files {
+  min-width: 0;
+}
+
+.session-files h2,
+.session-files p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-files h2 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.session-files p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 850px) {
   .app-layout {
-    padding: 10px 0;
+    padding-inline: 24px;
   }
 
-  .main-card {
-    padding: 15px;
+  .import-panel {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-layout {
+    padding-inline: 18px;
   }
 
-  .app-title {
+  .app-header {
+    gap: 8px;
+    padding-block: 20px;
+  }
+
+  .wordmark {
+    font-size: 13px;
+  }
+
+  .app-content {
+    padding-block: 24px 36px;
+  }
+
+  .import-panel {
+    padding: 22px;
+  }
+
+  .usage-title {
     font-size: 24px;
   }
+
+  .session-header {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 16px 12px;
+  }
+
+  .session-header .ant-btn {
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+
+  .session-files h2 {
+    font-size: 13px;
+  }
+
+  .session-files p {
+    font-size: 12px;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .app-layout {
-    padding: 5px 0;
+    padding-inline: 12px;
   }
+}
 
-  .main-card {
-    padding: 10px;
-  }
-
-  .app-title {
-    font-size: 20px;
-  }
-
-  .ant-upload-drag-icon {
-    font-size: 48px;
-  }
-
-  .ant-upload-text {
-    font-size: 16px;
-  }
-
-  .ant-upload-hint {
-    font-size: 14px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
   }
 }

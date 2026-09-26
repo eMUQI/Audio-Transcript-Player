@@ -1,86 +1,76 @@
-.webvtt-player .match {
-  background-color: lightyellow;
-}
-
-.webvtt-player .line {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.webvtt-player .time {
-  width: 110px;
-  float: left;
-  color: #999;
-  font-size: 10pt;
-  line-height: 14pt;
-}
-
-.webvtt-player .text {
-  margin-left: 110px;
-}
-
-.webvtt-player .track {
-  flex: 6;
-  height: 40vh;
-  padding: 10px;
-  overflow-y: scroll;
-}
-
-.webvtt-player .active.line {
-  /* border: 1px solid #ccc; */
-  border-left: 4px solid #007bff67; 
-}
-
-.webvtt-player .match {
-  background-color: lightyellow;
-}
-
-.webvtt-player .line {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.webvtt-player .time {
-  width: 110px;
-  float: left;
-  font-size: 10pt;
-  line-height: 14pt;
-}
-
-.webvtt-player .text {
-  margin-left: 110px;
-  color: #0000005a;
-}
-.webvtt-player .transcript {
-  height: 45vh;
-  padding: 10px;
-  overflow-y: scroll;
-}
 .webvtt-player .media {
   width: 100%;
-  border: thin solid #ccc;
-  margin-right: auto;
+}
+
+.webvtt-player .player {
+  padding: 0 24px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .webvtt-player audio {
-  width: 100%;
-  background-color: #ccc;
+  display: block;
+  flex: 1;
+  min-width: 0;
+  height: 44px;
 }
 
-.webvtt-player audio::-webkit-media-controls-panel {
-  background-color: #ccc;
-}
-
-
-.webvtt-player .controls {
-  padding: 5px;
+.webvtt-player .speed {
+  flex-shrink: 0;
+  width: 80px;
+  height: 44px;
+  padding: 0 28px 0 12px;
+  border: 0;
+  border-radius: 22px;
+  /* 去掉原生下拉样式：原生箭头贴在按最长选项撑开的最右侧，短值时留白过大 */
+  appearance: none;
+  background: #f1f3f4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23647065' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  color: #283a30;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
   text-align: center;
-  vertical-align: text-top;
-  background-color: #ccc;
+  text-align-last: center;
+  cursor: pointer;
 }
 
-.webvtt-player .seekBar {
-  vertical-align: middle;
-  width: 70%;
+.webvtt-player .speed:hover {
+  background-color: #e7eae8;
 }
 
+.audio-error {
+  margin: 14px 0 0;
+  color: #953d30;
+  font-size: 13px;
+}
+
+.webvtt-player .tracks > p {
+  margin: 16px 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  /* 原生播放器的进度条随宽度缩短，窄屏尽量把宽度留给它 */
+  .webvtt-player .player {
+    padding: 0 8px 12px;
+  }
+
+  /* 窄屏下原生播放器太窄会隐藏进度条，倍速另起一行 */
+  .player-controls {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .webvtt-player audio {
+    flex-basis: 100%;
+  }
+
+  .webvtt-player .speed {
+    height: 32px;
+  }
+}

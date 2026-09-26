@@ -2,7 +2,7 @@
   padding: 5px;
 }
 
-.webvtt-player .time {
+.webvtt-player .point .time {
   width: 110px;
   float: left;
   font-size: 10pt;
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.webvtt-player .text {
+.webvtt-player .point .text {
   margin-left: 110px;
 }
 

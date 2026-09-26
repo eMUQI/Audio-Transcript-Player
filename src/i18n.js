@@ -1,0 +1,31 @@
+const zh = {
+  'Listen with the transcript': '听音频，读字幕',
+  'Audio Transcript Player': '音频字幕播放器',
+  'Skip to content': '跳到正文',
+  'Follow along, or select any line to hear it again.': '跟随音频阅读，点击任意一句即可重听。',
+  'Listening workspace': '音频与字幕',
+  'Change files': '更换文件',
+  'files': '个文件',
+  'Start with your files': '导入你的文件',
+  'Choose one audio file and its matching subtitles, together or one at a time.': '选择一个音频和对应的字幕，可一起导入，也可分别选择。',
+  'Choose files': '选择文件',
+  'or drop them here': '或将文件拖到这里',
+  'Audio': '音频',
+  'Transcript': '字幕',
+  'Choose an audio file': '选择音频文件',
+  'Choose an SRT or VTT file': '选择 SRT 或 VTT 字幕',
+  'Selected': '已选择',
+  'Your files stay in your browser. No account needed.': '文件仅在浏览器中处理，无需注册。',
+  'Choose an audio file or an SRT / VTT subtitle file.': '请选择音频文件，或 SRT / VTT 字幕文件。',
+  'Playback speed': '播放速度',
+  'Loading subtitles…': '正在加载字幕…',
+  'Search transcript': '搜索字幕', 'Find a word or phrase': '查找单词或短语',
+  'Clear search': '清除搜索', 'No matching lines': '没有找到匹配的字幕',
+  '1 matching line': '1 句匹配', '{n} matching lines': '{n} 句匹配',
+  'This audio could not be loaded. Try another audio file.': '无法加载音频，请尝试其他音频文件。',
+  'Playback could not start. Try selecting your audio file again.': '无法开始播放，请重新选择音频文件。',
+  'No subtitles found. Please check the subtitle file and re-upload.': '未找到字幕，请检查字幕文件并重新导入。',
+  'Unable to load subtitles. Please check the SRT or VTT file and re-upload.': '无法加载字幕，请检查 SRT 或 VTT 文件并重新导入。'
+}
+export const translate = (language, text, n) =>
+  (language === 'zh' ? (zh[text] ?? text) : text).replace('{n}', n)

@@ -17,32 +17,34 @@ class TranscriptLine extends React.Component {
 
   render() {
     let style = ''
-    if (this.props.query && this.props.cue.text.match(new RegExp(this.props.query, 'i'))) {
+    if (this.props.query && this.props.cue.text.toLowerCase().includes(this.props.query.toLowerCase())) {
       style = 'match'
-    } else if (this.state.isActive) {
-      style = 'active'
     }
 
-    // note: dangerouslySetInnerHTML is used because the text may contain HTML
     return (
-      <div
-        className={`${style} line`}
+      <button
+        type="button"
+        aria-current={this.state.isActive ? 'true' : undefined}
+        className={`${this.state.isActive ? 'active' : ''} ${style} line`}
         onClick={this.onClick}
         ref={this.lineRef}
       >
-        <div className="time">
-          [{this.startTime()} - {this.endTime()}]
-        </div>
-        <div
-          className={`${style} text`}
-          dangerouslySetInnerHTML={{ __html: this.props.cue.text }} />
-      </div>
+        <span className="time">
+          {this.startTime()} – {this.endTime()}
+        </span>
+        <span className="text">{this.props.cue.getCueAsHTML().textContent}</span>
+      </button>
     )
   }
 
   onEnter() {
     this.setState({ isActive: true });
-    this.lineRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Automatically scroll to visible area
+    const line = this.lineRef.current;
+    const track = line.parentElement;
+    // 仅滚动字幕容器，避免跟随播放时移动整页或打断键盘操作。
+    if (!track.querySelector(':focus-visible')) {
+      track.scrollTo({ top: line.offsetTop - track.offsetTop - track.clientHeight / 2 + line.clientHeight / 2, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
   }
 
   onExit() {

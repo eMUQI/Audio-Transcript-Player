@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import TranscriptLine from './TranscriptLine'
 import './Track.css'
 
-class Transcript extends React.Component {
+class Transcript extends React.PureComponent {
 
   render() {
     const lines = []
