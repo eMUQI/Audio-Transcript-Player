@@ -23,13 +23,13 @@ export function handleAudioUpload(file, setAudioSrc, audioSrc) {
 
 // Handle subtitle file upload, including SRT to VTT conversion
 export function handleTranscriptUpload(file, setTranscriptSrc, transcriptSrc, convertSRTtoVTT) {
-    if (file.name.endsWith('.vtt')) {
+    if (file.name.toLowerCase().endsWith('.vtt')) {
         if (transcriptSrc) {
             URL.revokeObjectURL(transcriptSrc);
         }
         const vttURL = URL.createObjectURL(file);
         setTranscriptSrc(vttURL);
-    } else if (file.name.endsWith('.srt')) {
+    } else if (file.name.toLowerCase().endsWith('.srt')) {
         const reader = new FileReader();
         reader.onload = (e) => {
             const srtContent = e.target.result;
